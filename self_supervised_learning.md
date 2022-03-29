@@ -1,5 +1,5 @@
 
-## [Self-supervised Video representation learning by Pace Prediction](https://arxiv.org/pdf/2008.05861.pdf)
+## [Self-supervised Video representation learning by Pace Prediction](https://arxiv.org/pdf/2008.05861.pdf) (ECCV 2020)
 
 The paper makes use of the fact that as humans, we are able to distinguish between videos played at different paces (frame rates) if we have a general understanding of the content of the video. 
 
@@ -35,7 +35,7 @@ From experiments, it is observed that performance on the context-based contrasti
 
 <br> 
 
-## [Self-supervised Video Representation Learning with Cross-Stream Prototypical Contrasting](https://arxiv.org/pdf/2106.10137.pdf)
+## [Self-supervised Video Representation Learning with Cross-Stream Prototypical Contrasting](https://arxiv.org/pdf/2106.10137.pdf) (WACV 2022)
 This paper used RGB content and optical flow as two separate "streams" of a given video. The premise of this method is that any changes in the RGB content across frames of a video will be reflected in the optical flow as well, which means the representations of the RGB channel should be predictable using those of the optical flow channel and vice-versa. The overall method is reminiscent of SwAV ([Caron et al., 2021](https://arxiv.org/pdf/2006.09882.pdf)). 
 
 The overall pretraining method consists of two phases: **single stream** and **cross-stream** learning, where RGB pixels and optical flow are the two streams. Architecturally, each stream consists of an encoder $f_{s}$ and a set of learnable embeddings $C_{s}$ which can be implemented as the weights of an unbiased linear layer.  
@@ -72,9 +72,10 @@ where $\alpha$ and $\beta$ are normalization vectors such that $Q^*$ is a probab
 This learning stage is performed after single stream learning. In this method, both encoders and set of prototype vectors are trained in an alternating manner using their own as well as the other encoder's representations. The loss function now looks like this: 
 
 $$
-\begin{align*}
-\mathcal{L}_{s}^{\text{Cross-stream}}=(z_{s}^{1},z_{s}^{2},z_{t}^{1},z_{t}^{2})=L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})+L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})\\+L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})+L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})
-\end{align*}
+\mathcal{L}_{s}^{\text{Cross-stream}}=(z_{s}^{1},z_{s}^{2},z_{t}^{1},z_{t}^{2})
+$$
+$$
+=L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})+L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})+L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})+L_{s}(z_{s}^{1},z_{s}^{2},z_{t}^{2},q_{t}^{2})
 $$
 $$
 L_{s}(z_{s}^{1},z_{s}^{1},z_{t}^{1},q_{t}^{2})=l_{s}(z_{s}^{1},q_{t}^{2})+l_{s}(z_{s}^{2},q_{t}^{2})+l_{s}(z_{t}^{1},q_{t}^{2})
