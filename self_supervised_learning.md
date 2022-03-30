@@ -86,3 +86,63 @@ where $l_{s}$ is the same as defined before. This loss ensures predictability of
 <p align=center>
     <img src='images/self-supervision/cross_stream_prot_contrast.png' alt='cross stream prototypical contrasting' width=700/>
 </p>
+
+<!-- ## [Self-supervised Semantic Segmentation Grounded in Visual Concepts](https://arxiv.org/pdf/2203.13868.pdf) (CVPR 22) -->
+
+<br>
+
+## [Self-supervised Video Transformer](https://arxiv.org/pdf/2112.01514.pdf) (CVPR 2022)
+This paper trains a vision transformer architecture for video understanding using a self-supervision-based pretext task. The training method they adopt is very similar to the multi-crop strategy used in training DINO ([Caron et al., 2021](https://arxiv.org/pdf/2104.14294.pdf)) where, from an image, 2 global and $K$ local views are extracted (essentially crops of the image at varying views and areas) and similarity is enforced between representations of global-global and local-global views. In this paper, the following methodology is adopted.
+
+<p align=center>
+    <img src='images/self-supervision/svt_arch.png' alt='SVT architecture and training' width=800/>
+</p>
+
+### **Data preparation**
+For a video $\{x_{i}\}_{t=1}^{N}$ of length $N$ frames, certain sub-clips (called "views") are extracted using the following heuristics.
+ - **Global views**: These consist of randomly selected frames from 90% of the video's total length, with spatial resolution $(224, 224)$. Sampling of frames is performed at two frame rates, $T=\{8,16\}$. 2 such clips are extracted, denoted as $(g_{1},g_{2})$.
+ - **Local views**: These consist of randomly select frames forming $1/8^{th}$ of the video's total length and about 40% spatial area of the frames. Four frame rates are used while sampling, $T=\{2,4,8,16\}$ and spatial resolution is fixed at $(96,96)$. 8 such local views are generated, $\{l_{1},\dots,l_{8}\}$. 
+
+Each frame in every clip has RGB channels, making the overall shape of the input $(C\times T\times W\times H)$. Just like ViT ([Dosovitskiy et al., 2021](https://arxiv.org/pdf/2010.11929.pdf)), each input is chunked into visual tokens along the spatial dimensions (at most 196 in number) and temporal tokens along the temporal dimension (at most 16 in number). 
+
+### **Dynamic positional encoding**
+Since the transformer now has a temporal dimension and deals with varying resolutions, it is not possible to use vanilla positional embeddings along with the visual and temporal tokens. This work trains separate learnable positional embeddings for spatial and temporal dimensions. Embeddings corresponding to the highest spatial and temporal resolutions are initialized. If the spatial resolution is lower than $224$ or sampling rate is less than $16$, the embeddings are interpolated to fill in the gaps. The positional embeddings are tied to the frame indices in the original video. However it is noted that the encodings do not incorporate any time-stamp related information when learnt, which indicates that the relative ordering of frames should be sufficient positional information.
+
+### **Network architecture**
+The paper follows a teacher-student network setup similar to BYOL ([Grill et al., 2020](https://arxiv.org/pdf/2006.07733.pdf)). Two video transformer models are intialized as exact replicas of each other. One network is the "student" which is updated by using gradients and used during inference after pre-training. The other network is the "teacher" which is not updated by gradients, but as an exponential moving average of the student network. The purpose of the teacher model is to provide target representations for the student network to match which are consistent for similar views. Updating it to move closer to the student model through an EMA prevents degenerate solutions such as all representations collapsing to the same feature vector.
+
+$$
+\theta_{\text{teacher}} = \tau \cdot \theta_{\text{teacher}} + (1-\tau) \cdot \theta_{\text{student}}\quad ;\quad \tau \text{ is set close to 1.0}
+$$
+
+### **Training**
+The views extracted from the videos are first augmented using standard transformations like color jitter, gray scaling, gaussian blurring and solarization. For datasets not containing flip equivariant classes (e.g. walking left/right), flip based augmentations are also used. As mentioned earlier, the loss function ensures similarity between representations of local-global and global-global views.
+
+$$
+\mathcal{L} = \mathcal{L}_{lg} + \mathcal{L}_{gg}
+$$
+
+The output representation $f$ for any view are transformed using a softmax-like function ($\tau$ is a temperature parameters to control sharpening of the distribution).
+
+$$
+\tilde{f}[i] = \cfrac{\exp(f[i])/\tau}{\sum_{i=1}^{n}\exp(f[i])/\tau} 
+$$
+
+The loss between global views is termed the **motion-correspondence loss**, since it ensures consistent representation from the student and teacher (latter being the target) for two views from the same video containing different motion content ($\langle.,.\rangle$ is the inner product operation).
+
+$$
+\mathcal{L}_{gg} = -\langle\tilde{f}_{g_1}, \log(\tilde{f}_{g_{2}})\rangle
+$$
+
+The second loss ensures cross view similarity in representations. The teacher model provides target representation using the global view and the representations of each local view obtained from the student model are trained to be consistent with it.
+
+$$
+\mathcal{L}_{lg}= -\sum_{i=1}^{8}\langle \tilde{f_{g_{t}}},\log \tilde{f}_{l_{s}}^{(i)}\rangle
+$$
+
+### **Slow-Fast Inference**
+To sufficiently capture information along spatial and temporal dimension during inference, slow-fast inference is adopted where two views of the video are used to generate the final feature vector: one view has high spatial resolution but low frame rate (slow) and the other has low spatial resolution but high frame rate (fast). The student model is used to separately generate feature vectors for the two views and the final vector is generated by simple aggregation (e.g. addition) of the two vectors.
+
+<p align=center>
+    <img src='images/self-supervision/svt_slowfast.png' alt='SVT slow-fast inference' width=600/>
+</p>

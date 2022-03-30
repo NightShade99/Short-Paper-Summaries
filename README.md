@@ -12,7 +12,7 @@ In the list below, publications with a hyperlink have been summarized. Summaries
 ### Self-supervised learning
  - [Self-supervised Video representation learning by Pace Prediction](self_supervised_learning.md/#self-supervised-video-representation-learning-by-pace-predictionhttpsarxivorgpdf200805861pdf) (ECCV 2020)
  - [Self-supervised Video Representation Learning with Cross-Stream Prototypical Contrasting](self_supervised_learning.md/#self-supervised-video-representation-learning-with-cross-stream-prototypical-contrastinghttpsarxivorgpdf210610137pdf) (WACV 2022)
- - Self-supervised video Transformer (CVPR 2022)
+ - [Self-supervised video Transformer](self_supervised_learning.md/#self-supervised-video-transformerhttpsarxivorgpdf211201514pdf-cvpr-2022) (CVPR 2022)
 
 ### Reinforcement learning
 - [Reinforcement Learning with Action-Free Pre-Training from Videos](reinforcement_learning.md/#reinforcement-learning-with-action-free-pre-training-from-videoshttpsarxivorgpdf220313880pdf)
