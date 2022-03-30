@@ -8,12 +8,11 @@ In the list below, publications with a hyperlink have been summarized. Summaries
 ### Segmentation
  - [The Lovász-Softmax loss: A tractable surrogate for the optimization of intersection-over-union measure in neural networks](segmentation.md/#the-lovász-softmax-loss-a-tractable-surrogate-for-the-optimization-of-intersection-over-union-measure-in-neural-networkshttpsarxivorgpdf170508790pdf-cvpr-2018) (CVPR 2018)
  - [Panoptic Feature Pyramid Networks](segmentation.md/#panoptic-feature-pyramid-networkshttpsarxivorgpdf190102446pdf-cvpr-2019) (CVPR 2019)
- - DLA-Net: Learning Dual Local Attention Features for Semantic Segmentation of Large-Scale Building Facade Point Clouds
 
 ### Self-supervised learning
  - [Self-supervised Video representation learning by Pace Prediction](self_supervised_learning.md/#self-supervised-video-representation-learning-by-pace-predictionhttpsarxivorgpdf200805861pdf) (ECCV 2020)
  - [Self-supervised Video Representation Learning with Cross-Stream Prototypical Contrasting](self_supervised_learning.md/#self-supervised-video-representation-learning-with-cross-stream-prototypical-contrastinghttpsarxivorgpdf210610137pdf) (WACV 2022)
  - Self-supervised video Transformer (CVPR 2022)
- - ASCNet: Self-supervised Video Representation Learning with Appearance-Speed Consistency (ICCV 2021)
- - Self-supervised Video Representation Learning by Context and Motion Decoupling (CVPR 2021)
- - Self-Supervised Video Representation Learning with Meta-Contrastive Network (ICCV 2021)
+
+### Reinforcement learning
+- [Reinforcement Learning with Action-Free Pre-Training from Videos](reinforcement_learning.md/#reinforcement-learning-with-action-free-pre-training-from-videoshttpsarxivorgpdf220313880pdf)
