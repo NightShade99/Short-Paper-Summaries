@@ -2,6 +2,8 @@
 
 I created this repo to keep myself motivated to stay up-to-date with ongoing research in several areas of computer vision and reinforcement learning. All summaries posted are based solely on my understand of the work, and could have factual or logical inconsistencies. I'd love to receive criticism/corrections/suggestions for my work: kindly raise an issue for the same. This repo will always be a work-in-progress.
 
+**Note.** You might want to install the [GitHub Math Display](https://chrome.google.com/webstore/detail/github-math-display/cgolaobglebjonjiblcjagnpmdmlgmda?hl=en) chrome extension to render equations correctly on your browser.
+
 ## Contents
 In the list below, publications with a hyperlink have been summarized. Summaries for the others will come soon. 
 
