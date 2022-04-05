@@ -5,15 +5,20 @@ I created this repo to keep myself motivated to stay up-to-date with ongoing res
 ## Contents
 In the list below, publications with a hyperlink have been summarized. Summaries for the others will come soon. 
 
-### Segmentation
- - [The Lovász-Softmax loss: A tractable surrogate for the optimization of intersection-over-union measure in neural networks](segmentation.md/#the-lovász-softmax-loss-a-tractable-surrogate-for-the-optimization-of-intersection-over-union-measure-in-neural-networkshttpsarxivorgpdf170508790pdf-cvpr-2018) (CVPR 2018)
- - [Panoptic Feature Pyramid Networks](segmentation.md/#panoptic-feature-pyramid-networkshttpsarxivorgpdf190102446pdf-cvpr-2019) (CVPR 2019)
+### [Domain Adaptation](domain_adaptation.md)
+- [Unsupervised Domain Adaptation by Backpropagation](https://arxiv.org/pdf/1409.7495.pdf)
+- [Domain Adaptive Faster R-CNN for Object Detection in the Wild](https://arxiv.org/pdf/1803.03243.pdf) (CVPR 2018)
 
-### Self-supervised learning
- - [Self-supervised Video representation learning by Pace Prediction](self_supervised_learning.md/#self-supervised-video-representation-learning-by-pace-predictionhttpsarxivorgpdf200805861pdf) (ECCV 2020)
- - [Self-supervised Video Representation Learning with Cross-Stream Prototypical Contrasting](self_supervised_learning.md/#self-supervised-video-representation-learning-with-cross-stream-prototypical-contrastinghttpsarxivorgpdf210610137pdf) (WACV 2022)
- - [Self-supervised Video Transformer](self_supervised_learning.md/#self-supervised-video-transformerhttpsarxivorgpdf211201514pdf-cvpr-2022) (CVPR 2022)
- - [Self-supervised Semantic Segmentation Grounded in Visual Concepts](self_supervised_learning.md/#self-supervised-semantic-segmentation-grounded-in-visual-conceptshttpsarxivorgpdf220313868pdf-cvpr-22) (CVPR 2022)
+### [Reinforcement learning](reinforcement_learning.md)
+- [Reinforcement Learning with Action-Free Pre-Training from Videos](https://arxiv.org/pdf/2203.13880.pdf)
 
-### Reinforcement learning
-- [Reinforcement Learning with Action-Free Pre-Training from Videos](reinforcement_learning.md/#reinforcement-learning-with-action-free-pre-training-from-videoshttpsarxivorgpdf220313880pdf)
+### [Segmentation](segmentation.md)
+ - [The Lovász-Softmax loss: A tractable surrogate for the optimization of intersection-over-union measure in neural networks](https://arxiv.org/pdf/1705.08790.pdf) (CVPR 2018)
+ - [Panoptic Feature Pyramid Networks](https://arxiv.org/pdf/1901.02446.pdf) (CVPR 2019)
+
+### [Self-supervised learning](self_supervised_learning.md)
+ - [Self-supervised Video representation learning by Pace Prediction](https://arxiv.org/pdf/2008.05861.pdf) (ECCV 2020)
+ - [Self-supervised Video Representation Learning with Cross-Stream Prototypical Contrasting](https://arxiv.org/pdf/2106.10137.pdf) (WACV 2022)
+ - [Self-supervised Video Transformer](https://arxiv.org/pdf/2112.01514.pdf) (CVPR 2022)
+ - [Self-supervised Semantic Segmentation Grounded in Visual Concepts](https://arxiv.org/pdf/2203.13868.pdf) (CVPR 2022)
+
