@@ -1,4 +1,4 @@
-# Lots of Papers
+# Short Paper Summaries
 
 I created this repo to keep myself motivated to stay up-to-date with ongoing research in several areas of computer vision and reinforcement learning. All summaries posted are based solely on my understand of the work, and could have factual or logical inconsistencies. I'd love to receive criticism/corrections/suggestions for my work: kindly raise an issue for the same. This repo will always be a work-in-progress.
 
